@@ -15,8 +15,11 @@
                     case 'L':
                         LoginMenu loginMenu = new LoginMenu(); // create an instance of the LoginMenu class
                         loginMenu.Print(); break;
-                    case 'R': /*RegisterMenu.Print();*/ break;
-                    case 'E': Environment.Exit(0); break;
+                    case 'R':
+                        RegisterMenu registerMenu = new RegisterMenu(); // create an instance of the Register class
+                        registerMenu.Print(); break;
+                    case 'E':
+                        Environment.Exit(0); break;
                     default: break;
                 }
             }

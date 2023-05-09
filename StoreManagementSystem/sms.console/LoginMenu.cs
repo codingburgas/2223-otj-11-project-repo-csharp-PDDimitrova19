@@ -46,7 +46,8 @@ namespace sms.console
                     case 'B':
                         StartProgram startProgram = new StartProgram();
                         StartProgram.Print(); break;
-                    case 'E': Environment.Exit(0); break;
+                    case 'E': 
+                        Environment.Exit(0); break;
                     default: break;
                 }
             }
