@@ -24,9 +24,4 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\sms.bll\sms.bll.csproj" />
-    <ProjectReference Include="..\sms.console\sms.console.csproj" />
-  </ItemGroup>
-
 </Project>
