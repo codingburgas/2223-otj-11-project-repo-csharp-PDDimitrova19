@@ -1,4 +1,5 @@
 CREATE DATABASE StoreManagementSystem;
+GO
 
 USE StoreManagementSystem;
 
