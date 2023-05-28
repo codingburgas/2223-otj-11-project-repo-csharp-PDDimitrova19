@@ -31,7 +31,7 @@ namespace sms.console
             string username = GetUsername(firstName, lastName, email);
 
             Console.Write("Password: ");
-            string password = GetPassword();
+            string password = GetPassword(firstName, lastName, username, email);
 
             UserService.RegisterUser(firstName, lastName, username, email, password);
 
@@ -40,13 +40,31 @@ namespace sms.console
             StartMenu.Print();
         }
 
+        public static void PrintPassword(string firstName, string lastName, string username, string email)
+        {
+            Console.Write("New Password: ");
+            string password = GetPassword(firstName, lastName, username, email);
+
+            if (password.IsNullOrEmpty() || (password.Length < 4 || password.Length > 12))
+            {
+                GetPassword(firstName, lastName, username, email);
+            }
+            else
+            {
+                UserService.RegisterUser(firstName, lastName, username, email, password);
+                Console.WriteLine("User Registered");
+                Console.ReadKey(true);
+                StartMenu.Print();
+            }
+        }
+
         public static void PrintUsernameAndPassword(string firstName, string lastName, string email)
         {
-            Console.WriteLine("New Username: ");
+            Console.Write("New Username: ");
             string username = GetUsername(firstName, lastName, email);
 
-            Console.WriteLine("New Password: ");
-            string password = GetPassword();
+            Console.Write("New Password: ");
+            string password = GetPassword(firstName, lastName, username, email);
 
             User? user = UserService.GetUserByUsername(username);
 
@@ -61,6 +79,18 @@ namespace sms.console
             {
                 GetUsername(firstName, lastName, email);
             }
+
+            if(password.IsNullOrEmpty() || (password.Length < 5 || password.Length > 12) )
+            {
+                GetPassword(firstName, lastName, username, email);
+            }
+            else
+            {
+                UserService.RegisterUser(firstName, lastName, username, email, password);
+                Console.WriteLine("User Registered");
+                Console.ReadKey(true);
+                StartMenu.Print();
+            }
             
         }
 
@@ -74,6 +104,7 @@ namespace sms.console
                     Console.WriteLine();
                     Console.WriteLine("Please insert Username");
                     Console.ReadKey();
+                    Console.Clear();
                     PrintUsernameAndPassword(firstName, lastName, email);
                 }
 
@@ -84,30 +115,33 @@ namespace sms.console
                 Console.WriteLine();
                 Console.WriteLine("This Username is already taken");
                 Console.ReadKey();
+                Console.Clear();
                 PrintUsernameAndPassword(firstName, lastName, email);
             }
             return username;
         }
 
-        private static string GetPassword()
+        private static string GetPassword(string firstName, string lastName, string username, string email)
         {
             string password = Console.ReadLine();
 
-            //if (password.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Password must be inputed");
-            //    Console.ReadKey();
-            //    PrintUsernameAndPassword();
-            //}
+            if (password.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please insert Password");
+                Console.ReadKey();
+                Console.Clear();
+                PrintPassword(firstName, lastName, username, email);
+            }
 
-            //if (password.Length < 4 || password.Length > 12)
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Password must be between 4 and 12 characters");
-            //    Console.ReadKey();
-            //    PrintUsernameAndPassword();
-            //}
+            if (password.Length < 4 || password.Length > 12)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Password must be between 4 and 12 characters");
+                Console.ReadKey();
+                Console.Clear();
+                PrintPassword(firstName, lastName, username, email);
+            }
             return password;
         }
     }
