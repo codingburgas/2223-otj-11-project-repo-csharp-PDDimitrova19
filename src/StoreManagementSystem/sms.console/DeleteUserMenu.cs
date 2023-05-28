@@ -14,17 +14,20 @@ namespace sms.console
         public static void Print()
         {
             Console.Clear();
-            Console.Write("Delete User Menu\n");
+            Console.WriteLine("      ╔╦╗┌─┐┬  ┌─┐┌┬┐┌─┐  ╔╦╗┌─┐┌┐┌┬ ┬");
+            Console.WriteLine(" ----- ║║├┤ │  ├┤  │ ├┤   ║║║├┤ ││││ │-----");
+            Console.WriteLine("|     ═╩╝└─┘┴─┘└─┘ ┴ └─┘  ╩ ╩└─┘┘└┘└─┘     |");
+            Console.WriteLine("|                                          |");
 
-            Console.Write("Username: ");
+            Console.Write("             Username: ");
             string username = GetUsername();
-            Console.Write("Password: ");
+            Console.Write("\n             Password: ");
             string password = GetPassword();
 
             if (!UserService.LoginUser(username, password))
             {
                 Console.WriteLine();
-                Console.Write("Wrong Username or Password");
+                Console.Write("\n      ---Wrong Username or Password---");
                 Console.ReadKey();
                 Print();
             }
@@ -32,7 +35,7 @@ namespace sms.console
             UserService.DeleteUser(username, password);
 
             Console.WriteLine();
-            Console.Write("User Deleted");
+            Console.Write("\n            ---User Deleted---");
             Console.ReadKey(true);
             StartMenu.Print();
         }
@@ -44,7 +47,7 @@ namespace sms.console
             if (username.IsNullOrEmpty())
             {
                 Console.WriteLine();
-                Console.WriteLine("Please insert Username");
+                Console.WriteLine("\n        ---Please insert Username---");
                 Console.ReadKey();
                 Print();
             }
@@ -59,7 +62,7 @@ namespace sms.console
             if (password.IsNullOrEmpty())
             {
                 Console.WriteLine();
-                Console.WriteLine("Please insert Password");
+                Console.WriteLine("\n        ---Please insert Password---");
                 Console.ReadKey();
                 Print();
             }

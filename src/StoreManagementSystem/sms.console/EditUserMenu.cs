@@ -15,30 +15,33 @@ namespace sms.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Edit User Menu");
-
-            Console.Write("\nOld Username: ");
+            Console.WriteLine("      ╔═╗┌┬┐┬┌┬┐  ╔╦╗┌─┐┌┐┌┬ ┬");
+            Console.WriteLine(" -----║╣  │││ │   ║║║├┤ ││││ │-----");
+            Console.WriteLine("|     ╚═╝─┴┘┴ ┴   ╩ ╩└─┘┘└┘└─┘     |");
+            Console.WriteLine("|                                  |");
+            
+            Console.Write("\n      Old Username: ");
             string oldUsername = GetOldUsername();
 
-            Console.Write("\nNew Username: ");
+            Console.Write("\n      New Username: ");
             string newUsername = GetNewUsername();
 
-            Console.Write("\nNew Password: ");
+            Console.Write("\n      New Password: ");
             string newPassword = GetNewPassword();
 
-            Console.Write("\n\nNew First Name: ");
+            Console.Write("\n\n    New First Name: ");
             string newFirstName = Console.ReadLine();
 
-            Console.Write("\nNew Last Name: ");
+            Console.Write("\n     New Last Name: ");
             string newLastName = Console.ReadLine();
 
-            Console.Write("\nNew Email: ");
+            Console.Write("\n         New Email: ");
             string newEmail = Console.ReadLine();
 
             UserService.EditUser(oldUsername, newUsername, newPassword, newFirstName, newLastName, newEmail);
 
             Console.WriteLine();
-            Console.WriteLine("\nUser Edited");
+            Console.WriteLine("\n\n         ---User Edited---");
             Console.ReadKey(true);
             StartMenu.Print();
         }
@@ -50,7 +53,7 @@ namespace sms.console
             if (username.IsNullOrEmpty())
             {
                 Console.WriteLine();
-                Console.WriteLine("Please insert Username");
+                Console.WriteLine("\n    ---Please insert Username---");
                 Console.ReadKey();
                 Print();
             }
@@ -59,7 +62,7 @@ namespace sms.console
             if (user == null)
             {
                 Console.WriteLine();
-                Console.WriteLine("Username doesn't exist");
+                Console.WriteLine("\n    ---Username doesn't exist---");
                 Console.ReadKey();
                 Print();
             }
@@ -73,7 +76,7 @@ namespace sms.console
             if (username.IsNullOrEmpty())
             {
                 Console.WriteLine();
-                Console.WriteLine("Please insert Username");
+                Console.WriteLine("\n    ---Please insert Username---");
                 Console.ReadKey();
                 Print();
             }
@@ -82,7 +85,7 @@ namespace sms.console
             if (user != null)
             {
                 Console.WriteLine();
-                Console.WriteLine("This Username is already taken");
+                Console.WriteLine("\n---This Username is already taken---");
                 Console.ReadKey();
                 Print();
             }
@@ -96,7 +99,7 @@ namespace sms.console
             if (password.IsNullOrEmpty())
             {
                 Console.WriteLine();
-                Console.WriteLine("Please insert Password");
+                Console.WriteLine("\n    ---Please insert Password---");
                 Console.ReadKey();
                 Print();
             }
@@ -104,7 +107,7 @@ namespace sms.console
             if (password.Length < 4 || password.Length > 12)
             {
                 Console.WriteLine();
-                Console.WriteLine("Password must be between 4 and 12 characters");
+                Console.WriteLine("\n-Password must be between 4 and 12 characters-");
                 Console.ReadKey();
                 Print();
             }

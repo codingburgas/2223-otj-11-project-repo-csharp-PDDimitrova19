@@ -16,33 +16,40 @@ namespace sms.console
         {
             Console.Clear();
 
-            Console.Write("Register Menu\n");
-
-            Console.Write("First Name: ");
+            Console.WriteLine("      ╦═╗┌─┐┌─┐┬┌─┐┌┬┐┌─┐┬─┐  ╔╦╗┌─┐┌┐┌┬ ┬");
+            Console.WriteLine(" -----╠╦╝├┤ │ ┬│└─┐ │ ├┤ ├┬┘  ║║║├┤ ││││ │-----");
+            Console.WriteLine("|     ╩╚═└─┘└─┘┴└─┘ ┴ └─┘┴└─  ╩ ╩└─┘┘└┘└─┘     |");
+            Console.WriteLine("|                                              |");
+            
+            Console.Write("              First Name: ");
             string firstName = Console.ReadLine(); ;
 
-            Console.Write("Last Name: ");
+            Console.Write("               Last Name: ");
             string lastName = Console.ReadLine(); ;
 
-            Console.Write("Email Address: ");
+            Console.Write("           Email Address: ");
             string email = Console.ReadLine();
 
-            Console.Write("Username: ");
+            Console.Write("                Username: ");
             string username = GetUsername(firstName, lastName, email);
 
-            Console.Write("Password: ");
+            Console.Write("                Password: ");
             string password = GetPassword(firstName, lastName, username, email);
 
             UserService.RegisterUser(firstName, lastName, username, email, password);
 
-            Console.WriteLine("User Registered");
+            Console.WriteLine("\n\n              ---User Registered---");
             Console.ReadKey(true);
             StartMenu.Print();
         }
 
         public static void PrintPassword(string firstName, string lastName, string username, string email)
         {
-            Console.Write("New Password: ");
+            Console.WriteLine("      ╦═╗┌─┐┌─┐┬┌─┐┌┬┐┌─┐┬─┐  ╔╦╗┌─┐┌┐┌┬ ┬");
+            Console.WriteLine(" -----╠╦╝├┤ │ ┬│└─┐ │ ├┤ ├┬┘  ║║║├┤ ││││ │-----");
+            Console.WriteLine("|     ╩╚═└─┘└─┘┴└─┘ ┴ └─┘┴└─  ╩ ╩└─┘┘└┘└─┘     |");
+            Console.WriteLine("|                                              |");
+            Console.Write("             New Password: ");
             string password = GetPassword(firstName, lastName, username, email);
 
             if (password.IsNullOrEmpty() || (password.Length < 4 || password.Length > 12))
@@ -52,7 +59,7 @@ namespace sms.console
             else
             {
                 UserService.RegisterUser(firstName, lastName, username, email, password);
-                Console.WriteLine("User Registered");
+                Console.WriteLine("\n\n              ---User Registered---");
                 Console.ReadKey(true);
                 StartMenu.Print();
             }
@@ -60,10 +67,15 @@ namespace sms.console
 
         public static void PrintUsernameAndPassword(string firstName, string lastName, string email)
         {
-            Console.Write("New Username: ");
+            Console.WriteLine("      ╦═╗┌─┐┌─┐┬┌─┐┌┬┐┌─┐┬─┐  ╔╦╗┌─┐┌┐┌┬ ┬");
+            Console.WriteLine(" -----╠╦╝├┤ │ ┬│└─┐ │ ├┤ ├┬┘  ║║║├┤ ││││ │-----");
+            Console.WriteLine("|     ╩╚═└─┘└─┘┴└─┘ ┴ └─┘┴└─  ╩ ╩└─┘┘└┘└─┘     |");
+            Console.WriteLine("|                                              |");
+
+            Console.Write("             New Username: ");
             string username = GetUsername(firstName, lastName, email);
 
-            Console.Write("New Password: ");
+            Console.Write("             New Password: ");
             string password = GetPassword(firstName, lastName, username, email);
 
             User? user = UserService.GetUserByUsername(username);
@@ -71,7 +83,7 @@ namespace sms.console
             if(user == null) 
             {
                 UserService.RegisterUser(firstName, lastName, username, email, password);
-                Console.WriteLine("User Registered");
+                Console.WriteLine("\n\n              ---User Registered---");
                 Console.ReadKey(true);
                 StartMenu.Print();
             }
@@ -87,7 +99,7 @@ namespace sms.console
             else
             {
                 UserService.RegisterUser(firstName, lastName, username, email, password);
-                Console.WriteLine("User Registered");
+                Console.WriteLine("\n\n              ---User Registered---");
                 Console.ReadKey(true);
                 StartMenu.Print();
             }
@@ -102,7 +114,7 @@ namespace sms.console
             if (username.IsNullOrEmpty())
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Please insert Username");
+                    Console.WriteLine("\n           ---Please insert Username---");
                     Console.ReadKey();
                     Console.Clear();
                     PrintUsernameAndPassword(firstName, lastName, email);
@@ -113,7 +125,7 @@ namespace sms.console
             if (user != null)
             {
                 Console.WriteLine();
-                Console.WriteLine("This Username is already taken");
+                Console.WriteLine("\n       ---This Username is already taken---");
                 Console.ReadKey();
                 Console.Clear();
                 PrintUsernameAndPassword(firstName, lastName, email);
@@ -128,7 +140,7 @@ namespace sms.console
             if (password.IsNullOrEmpty())
             {
                 Console.WriteLine();
-                Console.WriteLine("Please insert Password");
+                Console.WriteLine("\n           ---Please insert Password---");
                 Console.ReadKey();
                 Console.Clear();
                 PrintPassword(firstName, lastName, username, email);
@@ -137,7 +149,7 @@ namespace sms.console
             if (password.Length < 4 || password.Length > 12)
             {
                 Console.WriteLine();
-                Console.WriteLine("Password must be between 4 and 12 characters");
+                Console.WriteLine("\n --Password must be between 4 and 12 characters--");
                 Console.ReadKey();
                 Console.Clear();
                 PrintPassword(firstName, lastName, username, email);

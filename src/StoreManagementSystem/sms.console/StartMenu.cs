@@ -20,9 +20,10 @@ namespace sms.console
             while (!exit)
             {
                 Console.Clear();
-                Console.WriteLine("Welcome to Store Management System");
-                Console.WriteLine();
-
+                Console.WriteLine("      ╔═╗┌┬┐┌─┐┬─┐┌─┐  ╔═╗┬ ┬┌─┐┌┬┐┌─┐┌┬┐");
+                Console.WriteLine(" -----╚═╗ │ │ │├┬┘├┤   ╚═╗└┬┘└─┐ │ ├┤ │││-----");
+                Console.WriteLine("|     ╚═╝ ┴ └─┘┴└─└─┘  ╚═╝ ┴ └─┘ ┴ └─┘┴ ┴     |");
+                Console.WriteLine("|                                             |");
                 // Display the menu options with arrow indicator
                 for (i = 1; i <= totalOptions; i++)
                 {
@@ -31,12 +32,12 @@ namespace sms.console
                     if (currentOption == i)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write("=> ");
+                        Console.Write("             => ");
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.Write("   ");
+                        Console.Write("                ");
                     }
 
                     switch (i)
@@ -98,9 +99,6 @@ namespace sms.console
                     DeleteUserMenu.Print();
                     break;
                 case 5:
-                    Console.WriteLine("Exiting...");
-                    Console.WriteLine("Press any key to continue.");
-                    Console.ReadKey();
                     Environment.Exit(0);
                     break;
             }

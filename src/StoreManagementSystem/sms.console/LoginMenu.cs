@@ -16,26 +16,30 @@ namespace sms.console
         {
             Console.Clear();
 
-            Console.WriteLine("Login Menu\n");
 
-            Console.Write("Username: ");
+            Console.WriteLine("      ╦  ┌─┐┌─┐┬┌┐┌  ╔╦╗┌─┐┌┐┌┬ ┬");
+            Console.WriteLine(" -----║  │ ││ ┬││││  ║║║├┤ ││││ │-----");
+            Console.WriteLine("|     ╩═╝└─┘└─┘┴┘└┘  ╩ ╩└─┘┘└┘└─┘     |");
+            Console.WriteLine("|                                     |");
+
+            Console.Write("          Username: ");
 
             string username = GetUsername();
 
-            Console.Write("\nPassword: ");
+            Console.Write("\n          Password: ");
 
             string password = GetPassword();
 
             if (!UserService.LoginUser(username, password))
             {
                 Console.WriteLine();
-                Console.WriteLine("Wrong Username or Password");
+                Console.WriteLine("\n    ---Wrong Username or Password---");
                 Console.ReadKey();
                 Print();
             }
 
             Console.WriteLine();
-            Console.Write("User Logged In");
+            Console.Write("\n         ---User Logged In---");
             Console.ReadKey(true);
             StartMenu.Print();
         }
@@ -47,7 +51,7 @@ namespace sms.console
             if (username.IsNullOrEmpty())
             {
                 Console.WriteLine();
-                Console.WriteLine("Please insert Username");
+                Console.WriteLine("\n      ---Please insert Username---");
                 Console.ReadKey();
                 Print();
             }
@@ -62,7 +66,7 @@ namespace sms.console
             if (password.IsNullOrEmpty())
             {
                 Console.WriteLine();
-                Console.WriteLine("Password must be inputed");
+                Console.WriteLine("\n      ---Please insert Passsword---");
                 Console.ReadKey();
                 Print();
             }
