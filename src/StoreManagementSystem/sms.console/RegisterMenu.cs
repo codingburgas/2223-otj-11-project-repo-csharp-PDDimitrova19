@@ -24,11 +24,11 @@ namespace sms.console
             Console.Write("Last Name: ");
             string lastName = Console.ReadLine(); ;
 
-            Console.Write("Username: ");
-            string username = GetUsername();
-
             Console.Write("Email Address: ");
             string email = Console.ReadLine();
+
+            Console.Write("Username: ");
+            string username = GetUsername(firstName, lastName, email);
 
             Console.Write("Password: ");
             string password = GetPassword();
@@ -40,37 +40,52 @@ namespace sms.console
             StartMenu.Print();
         }
 
-        //public static void PrintUsernameAndPassword()
-        //{
-        //    Console.Write("Username: \n");
-        //    string username = GetUsername();
+        public static void PrintUsernameAndPassword(string firstName, string lastName, string email)
+        {
+            Console.WriteLine("New Username: ");
+            string username = GetUsername(firstName, lastName, email);
 
-        //    Console.Write("Password: \n");
-        //    string password = GetPassword();
-        //}
+            Console.WriteLine("New Password: ");
+            string password = GetPassword();
 
-        private static string GetUsername()
+            User? user = UserService.GetUserByUsername(username);
+
+            if(user == null) 
+            {
+                UserService.RegisterUser(firstName, lastName, username, email, password);
+                Console.WriteLine("User Registered");
+                Console.ReadKey(true);
+                StartMenu.Print();
+            }
+            else
+            {
+                GetUsername(firstName, lastName, email);
+            }
+            
+        }
+
+        private static string GetUsername(string firstName,string lastName, string email)
         {
             string username = Console.ReadLine();
 
             //Check if username is null or empty
-            //if (username.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Username must be inputed");
-            //    Console.ReadKey();
-            //    PrintUsernameAndPassword();
-            //}
+            if (username.IsNullOrEmpty())
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Please insert Username");
+                    Console.ReadKey();
+                    PrintUsernameAndPassword(firstName, lastName, email);
+                }
 
-            //User? user = UserService.GetUserByUsername(username);
+            User? user = UserService.GetUserByUsername(username);
 
-            //if (user != null)
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Username already taken");
-            //    Console.ReadKey();
-            //    PrintUsernameAndPassword();
-            //}
+            if (user != null)
+            {
+                Console.WriteLine();
+                Console.WriteLine("This Username is already taken");
+                Console.ReadKey();
+                PrintUsernameAndPassword(firstName, lastName, email);
+            }
             return username;
         }
 
