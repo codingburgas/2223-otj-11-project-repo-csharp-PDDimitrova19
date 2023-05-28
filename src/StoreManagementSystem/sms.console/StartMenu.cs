@@ -92,10 +92,10 @@ namespace sms.console
                     RegisterMenu.Print();
                     break;
                 case 3:
-                    //EditUser();
+                    EditUserMenu.Print();
                     break;
                 case 4:
-                    //DeleteUser();
+                    DeleteUserMenu.Print();
                     break;
                 case 5:
                     Console.WriteLine("Exiting...");

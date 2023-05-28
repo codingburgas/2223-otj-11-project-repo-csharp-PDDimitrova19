@@ -63,6 +63,47 @@ namespace sms.bll
             }
         }
 
+        public static void EditUser(string oldUsername, string newUsername, string newPassword, string newFirstName, string newLastName, string newEmail)
+        {
+            using (var context = new StoreManagementSystemContext())
+            {
+                UserRepository userRepository = new(context);
+
+                User user = GetUserByUsername(oldUsername);
+
+                if (user != null)
+                {
+                    user.Username = newUsername;
+                    string hashedPassword = HashPassword(newPassword);
+                    user.Password = hashedPassword;
+                    user.FirstName = newFirstName; 
+                    user.LastName = newLastName;
+                    user.EmailAddress = newEmail;
+
+                    userRepository.UserEdit(user);
+                }
+            }
+        }
+
+        public static void DeleteUser(string username, string password)
+        {
+            using (var context = new StoreManagementSystemContext())
+            {
+                UserRepository userRepository = new(context);
+
+                User user = GetUserByUsername(username);
+
+                if (user != null)
+                {
+                    string hashedPassword = HashPassword(password);
+                    if (user.Password == hashedPassword)
+                    {
+                        userRepository.UserDelete(user);
+                    }
+                }
+            }
+        }
+
         public static string HashPassword(string password)
         {
             SHA256 hash = SHA256.Create();
