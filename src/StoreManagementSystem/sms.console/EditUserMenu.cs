@@ -47,22 +47,22 @@ namespace sms.console
         {
             string username = Console.ReadLine();
 
-            //if (username.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Write.LineToCenter("Username must be inputed");
-            //    Console.ReadKey();
-            //    Print();
-            //}
+            if (username.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please insert Username");
+                Console.ReadKey();
+                Print();
+            }
 
-            //User? user = UserService.GetUserByUsername(username);
-            //if (user == null)
-            //{
-            //    Console.WriteLine();
-            //    Write.LineToCenter("User doesn't exist");
-            //    Console.ReadKey();
-            //    Print();
-            //}
+            User? user = UserService.GetUserByUsername(username);
+            if (user == null)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Username doesn't exist");
+                Console.ReadKey();
+                Print();
+            }
             return username;
         }
 
@@ -70,22 +70,22 @@ namespace sms.console
         {
             string username = Console.ReadLine();
 
-            //if (username.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Write.LineToCenter("Username must be inputed");
-            //    Console.ReadKey();
-            //    Print();
-            //}
+            if (username.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please insert Username");
+                Console.ReadKey();
+                Print();
+            }
 
-            //User? user = UserService.GetUserByUsername(username);
-            //if (user != null)
-            //{
-            //    Console.WriteLine();
-            //    Write.LineToCenter("Username already taken");
-            //    Console.ReadKey();
-            //    Print();
-            //}
+            User? user = UserService.GetUserByUsername(username);
+            if (user != null)
+            {
+                Console.WriteLine();
+                Console.WriteLine("This Username is already taken");
+                Console.ReadKey();
+                Print();
+            }
             return username;
         }
 
@@ -93,21 +93,21 @@ namespace sms.console
         {
             string password = Console.ReadLine();
 
-            //if (password.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Write.LineToCenter("Password must be inputed");
-            //    Console.ReadKey();
-            //    Print();
-            //}
+            if (password.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please insert Password");
+                Console.ReadKey();
+                Print();
+            }
 
-            //if (password.Length < 4 || password.Length > 12)
-            //{
-            //    Console.WriteLine();
-            //    Write.LineToCenter("Password must be between 4 and 12 characters");
-            //    Console.ReadKey();
-            //    Print();
-            //}
+            if (password.Length < 4 || password.Length > 12)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Password must be between 4 and 12 characters");
+                Console.ReadKey();
+                Print();
+            }
 
             return password;
         }
