@@ -17,28 +17,28 @@ namespace sms.console
             Console.Clear();
             Console.WriteLine("Edit User Menu");
 
-            Console.Write("Old Username: ");
+            Console.Write("\nOld Username: ");
             string oldUsername = GetOldUsername();
 
-            Console.Write("New Username: ");
+            Console.Write("\nNew Username: ");
             string newUsername = GetNewUsername();
 
-            Console.Write("New Password: ");
+            Console.Write("\nNew Password: ");
             string newPassword = GetNewPassword();
 
-            Console.Write("New First Name: ");
+            Console.Write("\n\nNew First Name: ");
             string newFirstName = Console.ReadLine();
 
-            Console.Write("New Last Name: ");
+            Console.Write("\nNew Last Name: ");
             string newLastName = Console.ReadLine();
 
-            Console.Write("New Email: ");
+            Console.Write("\nNew Email: ");
             string newEmail = Console.ReadLine();
 
             UserService.EditUser(oldUsername, newUsername, newPassword, newFirstName, newLastName, newEmail);
 
             Console.WriteLine();
-            Console.WriteLine("User Edited");
+            Console.WriteLine("\nUser Edited");
             Console.ReadKey(true);
             StartMenu.Print();
         }

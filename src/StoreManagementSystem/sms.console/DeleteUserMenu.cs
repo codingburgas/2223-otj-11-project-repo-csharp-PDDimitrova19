@@ -41,13 +41,13 @@ namespace sms.console
         {
             string username = Console.ReadLine();
 
-            //if (username.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Write.LineToCenter("Username must be inputed");
-            //    Console.ReadKey();
-            //    Print();
-            //}
+            if (username.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please insert Username");
+                Console.ReadKey();
+                Print();
+            }
 
             return username;
         }
@@ -56,13 +56,13 @@ namespace sms.console
         {
             string password = Console.ReadLine();
 
-            //if (password.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Write.LineToCenter("Password must be inputed");
-            //    Console.ReadKey();
-            //    Print();
-            //}
+            if (password.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please insert Password");
+                Console.ReadKey();
+                Print();
+            }
 
             return password;
         }
