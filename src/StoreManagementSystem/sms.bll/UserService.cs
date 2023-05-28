@@ -24,6 +24,26 @@ namespace sms.bll
             }
         }
 
+        public static bool LoginUser(string username, string password)
+        {
+            using (var context = new StoreManagementSystemContext())
+            {
+                UserRepository userRepository = new(context);
+
+                User user = GetUserByUsername(username);
+
+                if (user != null)
+                {
+                    string hashedPassword = HashPassword(password);
+                    if (user.Password == hashedPassword)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
         public static void RegisterUser(string firstName, string lastName, string username, string email, string password)
         {
             using (var context = new StoreManagementSystemContext())

@@ -40,14 +40,14 @@ namespace sms.console
             StartMenu.Print();
         }
 
-        public static void PrintUsernameAndPassword()
-        {
-            Console.Write("Username: \n");
-            string username = GetUsername();
+        //public static void PrintUsernameAndPassword()
+        //{
+        //    Console.Write("Username: \n");
+        //    string username = GetUsername();
 
-            Console.Write("Password: \n");
-            string password = GetPassword();
-        }
+        //    Console.Write("Password: \n");
+        //    string password = GetPassword();
+        //}
 
         private static string GetUsername()
         {
