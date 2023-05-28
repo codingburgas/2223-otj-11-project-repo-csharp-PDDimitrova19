@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\sms.dal\sms.dal.csproj" />
-  </ItemGroup>
-
 </Project>
