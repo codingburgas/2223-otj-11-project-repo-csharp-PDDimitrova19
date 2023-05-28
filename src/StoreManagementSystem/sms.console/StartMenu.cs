@@ -89,7 +89,7 @@ namespace sms.console
                     LoginMenu.Print();
                     break;
                 case 2:
-                    //Login();
+                    RegisterMenu.Print();
                     break;
                 case 3:
                     //EditUser();

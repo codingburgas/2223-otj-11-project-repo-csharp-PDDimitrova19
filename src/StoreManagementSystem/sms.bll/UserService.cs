@@ -12,37 +12,6 @@ namespace sms.bll
 {
     public class UserService
     {
-        public static User? GetUserByUsername(string username)
-        {
-            using (var context = new StoreManagementSystemContext())
-            {
-                UserRepository userRepository = new(context);
-
-                User? user = userRepository.GetUsers().FirstOrDefault(u => u.Username == username);
-
-                return user;
-            }
-        }
-
-        public static bool LoginUser(string username, string password)
-        {
-            using (var context = new StoreManagementSystemContext())
-            {
-                UserRepository userRepository = new(context);
-
-                User user = GetUserByUsername(username);
-
-                if (user != null)
-                {
-                    string hashedPassword = HashPassword(password);
-                    if (user.Password == hashedPassword)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        }
 
         public static string HashPassword(string password)
         {
