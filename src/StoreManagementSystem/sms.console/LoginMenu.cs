@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
+using sms.dal.Models;
 
 namespace sms.console
 {
@@ -15,20 +16,20 @@ namespace sms.console
         {
             Console.Clear();
 
-            Console.WriteLine("Login Menu");
+            Console.WriteLine("Login Menu\n");
 
-            Console.WriteLine("Username: ");
+            Console.Write("Username: ");
 
             string username = GetUsername();
 
-            Console.WriteLine("Password: ");
+            Console.Write("\nPassword: ");
 
             string password = GetPassword();
 
             if (!UserService.LoginUser(username, password))
             {
                 Console.WriteLine();
-                Console.Write("Wrong Username or Password");
+                Console.WriteLine("Wrong Username or Password");
                 Console.ReadKey();
                 Print();
             }
@@ -43,24 +44,14 @@ namespace sms.console
         {
             string username = Console.ReadLine();
 
-            //Check if username is null or empty
-            //if (username.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Username must be inputed");
-            //    Console.ReadKey();
-            //    PrintUsernameAndPassword();
-            //}
+            if (username.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please insert Username");
+                Console.ReadKey();
+                Print();
+            }
 
-            //User? user = UserService.GetUserByUsername(username);
-
-            //if (user != null)
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Username already taken");
-            //    Console.ReadKey();
-            //    PrintUsernameAndPassword();
-            //}
             return username;
         }
 
@@ -68,21 +59,14 @@ namespace sms.console
         {
             string password = Console.ReadLine();
 
-            //if (password.IsNullOrEmpty())
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Password must be inputed");
-            //    Console.ReadKey();
-            //    PrintUsernameAndPassword();
-            //}
+            if (password.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Console.WriteLine("Password must be inputed");
+                Console.ReadKey();
+                Print();
+            }
 
-            //if (password.Length < 4 || password.Length > 12)
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Password must be between 4 and 12 characters");
-            //    Console.ReadKey();
-            //    PrintUsernameAndPassword();
-            //}
             return password;
         }
     }
