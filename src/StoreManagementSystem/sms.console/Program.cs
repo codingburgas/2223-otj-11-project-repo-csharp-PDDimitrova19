@@ -1,10 +1,12 @@
-﻿namespace sms.console
+﻿using System.ComponentModel;
+
+namespace sms.console
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            StartMenu.Print();
         }
     }
 }
